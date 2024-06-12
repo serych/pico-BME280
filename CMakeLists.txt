@@ -10,11 +10,11 @@ pico_sdk_init()
 
 add_executable(pico-BME280
 	main.c
-    lib/BMP280.hpp
-    lib/BMP280.cpp
 	)
+    
+target_sources(pico-BME280 PRIVATE main.c)    
 
-target_link_libraries(pico-BME280 pico_stdlib)
+target_link_libraries(pico-BME280 pico_stdlib hardware_spi hardware_clocks)
 
 # enable stdio output to usb, disable to uart
 pico_enable_stdio_usb(pico-BME280 1)
